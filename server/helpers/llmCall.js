@@ -8,11 +8,12 @@ const anthropic = new Anthropic({
 });
 
 
-const useAnthropic = async(prompt,max_tokens=1024)=>{
+const useAnthropic = async(messages,max_tokens=1024)=>{
     const msg = await anthropic.messages.create({
       model: "claude-3-5-sonnet-20241022",
       max_tokens: max_tokens,
-      messages: [{ role: "user", content: prompt }],
+      messages,
+      // temperature:0.8,
     });
     
     return msg;
